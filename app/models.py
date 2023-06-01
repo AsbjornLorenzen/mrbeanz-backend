@@ -1,0 +1,1 @@
+# Make connection with postgres. In here, all logic related to storing and retrieving in db is handled
