@@ -35,8 +35,6 @@ def beans_search(roastery_ids, farm_ids, vendor_ids):
         else:
             sql += f" WHERE coffeeid IN (SELECT CoffeeID FROM Sells WHERE VendorID IN ({vendor_ids_str}))"
     
-    print("\n\n\n" + sql + "\n\n\n")
-
     cur.execute(sql)
     tuple_resultset = cur.fetchall()
     conn.close()
