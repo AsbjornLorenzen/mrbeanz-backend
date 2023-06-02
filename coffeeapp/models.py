@@ -1,6 +1,6 @@
 # Make connection with postgres. In here, all logic related to storing and retrieving in db is handled
 
-from app.__init__ import conn
+from coffeeapp import conn
 
 def select_beans_by_id(beanid):
     cur = conn.cursor()

@@ -1,4 +1,4 @@
-from app.controllers import get_beans
+from coffeeapp.controllers import get_beans
 from flask import Blueprint, request, make_response, jsonify
 import json
 
