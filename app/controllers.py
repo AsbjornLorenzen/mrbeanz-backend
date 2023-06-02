@@ -1,5 +1,5 @@
 # Handles logic/controllers in the app, as well as data manipulation.
-from app.models import select_beans_by_id
+from  app.models import select_beans_by_id
 
 def get_beans(beanid):
     # get beans from postgres

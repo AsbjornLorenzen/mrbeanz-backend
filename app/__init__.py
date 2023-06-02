@@ -8,6 +8,6 @@ cors = CORS(app)
 app.register_blueprint(bp)
 
 # Connect to db here
-db = "dbname='asdf' user='postgres' host='127.0.0.1' password = 'UIS'"
+db = "dbname='coffeedb' user='postgres' host='127.0.0.1' password = 'UIS'"
 conn = psycopg2.connect(db)
 
