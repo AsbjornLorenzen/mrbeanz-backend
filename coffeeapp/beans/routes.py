@@ -1,4 +1,4 @@
-from coffeeapp.controllers import get_beans
+from coffeeapp.controllers import get_beans, beans_filter
 from flask import Blueprint, request, make_response, jsonify
 import json
 
@@ -12,10 +12,8 @@ def hello_world():
 # request:  contains coffeeid:int
 # response: json object containing info about beans with coffeeid
 def getbeanz(beanid):
-    print("test")
     thesebeans = get_beans(beanid)
     print(thesebeans)
-
     json_beans = json.dumps(thesebeans)
     return json_beans
 
@@ -26,7 +24,7 @@ def login():
     data = json.loads(request.data)
     username = data['username']
     password = data['password']
-    print(username,password)
+    #print(username,password)
 
     # If unsuccessful, return {"success":False}
     response_data = {'success':True,'username':username,'password':password}

@@ -19,22 +19,24 @@ def beans_search(roastery_ids, farm_ids, vendor_ids):
 
     if roastery_ids:
         roastery_ids_str = ", ".join(str(id) for id in roastery_ids)
-        sql += f" WHERE roasteryid IN ({roastery_ids_str})"    #Change roasteryid to real database bame
+        sql += f" WHERE RoasteryID IN ({roastery_ids_str})"
     
     if farm_ids:
         farm_ids_str = ", ".join(str(id) for id in farm_ids)
         if roastery_ids:
-            sql += f" AND farmid IN ({farm_ids_str})" #Change farmid to real database bame
+            sql += f" AND FarmID IN ({farm_ids_str})"
         else:
-            sql += f" WHERE farmid IN ({farm_ids_str})" #Change farmid to real database bame
+            sql += f" WHERE FarmID IN ({farm_ids_str})"
     
     if vendor_ids:
         vendor_ids_str = ", ".join(str(id) for id in vendor_ids)
         if roastery_ids or farm_ids:
-            sql += f" AND coffeeid IN (SELECT coffeeid FROM sells WHERE vendorid IN ({vendor_ids_str}))" #change database names
+            sql += f" AND coffeeid IN (SELECT CoffeeID FROM Sells WHERE VendorID IN ({vendor_ids_str}))"
         else:
-            sql += f" WHERE coffeeid IN (SELECT coffeeid FROM sells WHERE vendorid IN ({vendor_ids_str}))" #change database names
+            sql += f" WHERE coffeeid IN (SELECT CoffeeID FROM Sells WHERE VendorID IN ({vendor_ids_str}))"
     
+    print("\n\n\n" + sql + "\n\n\n")
+
     cur.execute(sql)
     tuple_resultset = cur.fetchall()
     conn.close()

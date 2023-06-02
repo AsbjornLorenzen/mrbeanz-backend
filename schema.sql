@@ -25,7 +25,8 @@ CREATE TABLE IF NOT EXISTS Farm(
 
 
 CREATE TABLE IF NOT EXISTS Roastery(
-	RoasteryName varchar(40) PRIMARY KEY,
+	RoasteryID integer PRIMARY KEY,
+	RoasteryName varchar(40),
     Locationn varchar(40)
 );
 
@@ -48,7 +49,7 @@ CREATE TABLE IF NOT EXISTS Coffee(
     Varietal varchar(40),
     FarmID integer REFERENCES Farm,
     Processing varchar(30),
-    RoasteryName varchar(40) REFERENCES Roastery,
+    RoasteryID integer REFERENCES Roastery,
     RoastLevel varchar(20)
 );
 
@@ -60,3 +61,4 @@ ALTER TABLE Sells ADD PRIMARY KEY (VendorID, CoffeeID);
 
 
 --commit; -- complete transaction
+\i initial_inserts.sql

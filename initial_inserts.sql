@@ -16,12 +16,12 @@ INSERT INTO public.UserProfile(UserID,UserSince) VALUES (4,'2014-02-01');
 INSERT INTO public.Farm(FarmID,Altitude,Locationn) VALUES (1,1210,'this is a farm location');
 INSERT INTO public.Farm(FarmID,Altitude,Locationn) VALUES (2,20,'Copenhagen, Denmark');
 
-INSERT INTO public.Roastery(RoasteryName,Locationn) VALUES ('Vesterbro good Roastery','Vesterbro, Denmark');
-INSERT INTO public.Roastery(RoasteryName,Locationn) VALUES ('The good swedish roastery','Malmo, Sweden');
+INSERT INTO public.Roastery(RoasteryID, RoasteryName,Locationn) VALUES (1,'Vesterbro good Roastery','Vesterbro, Denmark');
+INSERT INTO public.Roastery(RoasteryID, RoasteryName,Locationn) VALUES (2,'The good swedish roastery','Malmo, Sweden');
 
 
-INSERT INTO public.Coffee(CoffeeID,FairTrade,Varietal,FarmID,Processing,RoasteryName,RoastLevel) VALUES (1,true, 'Andreas varietal',1,'good processing','Vesterbro good Roastery','dark roast');
-INSERT INTO public.Coffee(CoffeeID,FairTrade,Varietal,FarmID,Processing,RoasteryName,RoastLevel) VALUES (2,false, 'Asbjorns varietal',2,'bad processing','The good swedish roastery','light roast');
+INSERT INTO public.Coffee(CoffeeID,FairTrade,Varietal,FarmID,Processing,RoasteryID,RoastLevel) VALUES (1,true, 'Andreas varietal',1,'good processing',1,'dark roast');
+INSERT INTO public.Coffee(CoffeeID,FairTrade,Varietal,FarmID,Processing,RoasteryID,RoastLevel) VALUES (2,false, 'Asbjorns varietal',2,'bad processing',2,'light roast');
 
 INSERT INTO public.Rates(Rating,FlavourProfile,UserID,CoffeeID) VALUES (4,'very interesting flavour profile',1,1);
 INSERT INTO public.Rates(Rating,FlavourProfile,UserID,CoffeeID) VALUES (2,'very boring flavour profile',2,1);
