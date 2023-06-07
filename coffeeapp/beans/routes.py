@@ -1,4 +1,4 @@
-from coffeeapp.controllers import get_beans, beans_filter, get_ratingsC, rate_coffeeC
+from coffeeapp.controllers import get_coffee_with_ratingsC, beans_filter, rate_coffeeC
 from flask import Blueprint, request, make_response, jsonify
 import json
 
@@ -12,19 +12,9 @@ def hello_world():
 # request:  contains coffeeid:int
 # response: json object containing info about beans with coffeeid
 def getbeanz(beanid):
-    thesebeans = get_beans(beanid)
-    print(thesebeans)
-    json_beans = json.dumps(thesebeans)
+    thesebeans = get_coffee_with_ratingsC(beanid)
+    json_beans = json.dumps(thesebeans, default=str)
     return json_beans
-
-@bp.route('/getRatings/<coffee_id>')
-# request:  contains coffeeid:int
-# response: json object containing info about beans with coffeeid
-def getRatings(coffee_id):
-    ratings = get_ratingsC(coffee_id)
-    print(ratings)
-    json_ratings = json.dumps(ratings, default=str)
-    return json_ratings
 
 @bp.route('/rate', methods=['POST'])
 # request:  contains userid:int, coffeeid:int, rating:int, flavorprofile:string, sweetness:int, body:int, acidity:int, bitterness:int, date:string

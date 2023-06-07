@@ -2,15 +2,28 @@
 
 from coffeeapp import conn
 
-def select_beans_by_id(beanid):
+def get_coffee_with_ratings(beanid):
     cur = conn.cursor()
-    sql = """
-    SELECT * FROM Coffee
-    WHERE CoffeeID = %s """
-    cur.execute(sql, (beanid,))
-    tuple_resultset = cur.fetchall()
+    # SQL query to retrieve the coffee with the specified beanid
+    coffee_query = """
+        SELECT *
+        FROM Coffee
+        WHERE CoffeeID = %s
+    """
+    cur.execute(coffee_query, (beanid,))
+    coffee = cur.fetchall()
+
+    # SQL query to retrieve all ratings associated with the coffee
+    ratings_query = """
+        SELECT *
+        FROM Rates
+        WHERE CoffeeID = %s
+    """
+    cur.execute(ratings_query, (beanid,))
+    ratings = cur.fetchall()
+
     cur.close()
-    return tuple_resultset
+    return coffee, ratings
 
 def rate_coffee(userid, coffeeid, rating, flavorprofile, sweetness, body, acidity, bitterness, date):
     cur = conn.cursor()
@@ -21,18 +34,6 @@ def rate_coffee(userid, coffeeid, rating, flavorprofile, sweetness, body, acidit
     """
     cur.execute(sql, (userid, coffeeid, rating, flavorprofile, sweetness, body, acidity, bitterness, date))
     cur.close()
-
-def get_ratings(coffeeid):
-    cur = conn.cursor()
-    sql = """
-        SELECT *
-        FROM Rates
-        WHERE CoffeeID = %s
-    """
-    cur.execute(sql, (coffeeid,))
-    ratings = cur.fetchall()
-    cur.close()
-    return ratings
 
 #If roastery_ids=[1, 2], the function will return coffee records from roasteries with IDs 1 and 2.
 def beans_search(roastery_ids, farm_ids, vendor_ids):
@@ -59,7 +60,7 @@ def beans_search(roastery_ids, farm_ids, vendor_ids):
     
     cur.execute(sql)
     tuple_resultset = cur.fetchall()
-    conn.close()
+    cur.close()
     return tuple_resultset
 
 
