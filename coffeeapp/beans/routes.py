@@ -62,3 +62,13 @@ def login():
     response = make_response(jsonify(response_data),200)
     response.headers['Content-Type'] = 'application/json'
     return response
+
+@bp.route('/ratebeanz',methods=['POST'])
+def ratebeanz():
+    # TODO: Add login for adding bean data to DB)
+    data = json.loads(request.data)
+    print(data)
+
+    response = make_response()
+    response.headers['Content-Type'] = 'application/json'
+    return response
