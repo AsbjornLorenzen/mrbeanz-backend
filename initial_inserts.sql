@@ -23,12 +23,12 @@ INSERT INTO public.Roastery(RoasteryID, RoasteryName,Locationn) VALUES (2,'The g
 INSERT INTO public.Coffee(CoffeeID,FairTrade,Varietal,FarmID,Processing,RoasteryID,RoastLevel) VALUES (1,true, 'Andreas varietal',1,'good processing',1,'dark roast');
 INSERT INTO public.Coffee(CoffeeID,FairTrade,Varietal,FarmID,Processing,RoasteryID,RoastLevel) VALUES (2,false, 'Asbjorns varietal',2,'bad processing',2,'light roast');
 
-INSERT INTO public.Rates(Rating,FlavourProfile,UserID,CoffeeID) VALUES (4,'very interesting flavour profile',1,1);
-INSERT INTO public.Rates(Rating,FlavourProfile,UserID,CoffeeID) VALUES (2,'very boring flavour profile',2,1);
-INSERT INTO public.Rates(Rating,FlavourProfile,UserID,CoffeeID) VALUES (5,'very strong flavour profile',1,2);
-
+INSERT INTO public.Rates(UserID, CoffeeID, Rating, FlavourProfile, Sweetness, Body, Acidity, Bitterness, DateOfRating) VALUES (1, 1, 4, 'Really good flavour', 4, 2, 1, 5, '2010-05-22');
+INSERT INTO public.Rates(UserID, CoffeeID, Rating, FlavourProfile, Sweetness, Body, Acidity, Bitterness, DateOfRating) VALUES (2, 2, 3, 'Really bad flavour', 2, 3, 3, 3, '2015-05-22');
+INSERT INTO public.Rates(UserID, CoffeeID, Rating, FlavourProfile, Sweetness, Body, Acidity, Bitterness, DateOfRating) VALUES (3, 2, 3, 'Really medium flavour', 3, 3, 2, 4, '2018-05-22');
 
 INSERT INTO public.Vendor(VendorID,Locationn) VALUES (1,'Esbjerg');
+INSERT INTO public.Vendor(VendorID,Locationn) VALUES (2,'Jyllinge');
 
 
 INSERT INTO public.Sells(Price,VendorID,CoffeeID) VALUES (400,1,1);

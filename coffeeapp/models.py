@@ -12,6 +12,28 @@ def select_beans_by_id(beanid):
     cur.close()
     return tuple_resultset
 
+def rate_coffee(userid, coffeeid, rating, flavorprofile, sweetness, body, acidity, bitterness, date):
+    cur = conn.cursor()
+    print(userid)
+    sql = """
+        INSERT INTO Rates (UserID, CoffeeID, Rating, FlavourProfile, Sweetness, Body, Acidity, Bitterness, DateOfRating)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+    """
+    cur.execute(sql, (userid, coffeeid, rating, flavorprofile, sweetness, body, acidity, bitterness, date))
+    cur.close()
+
+def get_ratings(coffeeid):
+    cur = conn.cursor()
+    sql = """
+        SELECT *
+        FROM Rates
+        WHERE CoffeeID = %s
+    """
+    cur.execute(sql, (coffeeid,))
+    ratings = cur.fetchall()
+    cur.close()
+    return ratings
+
 #If roastery_ids=[1, 2], the function will return coffee records from roasteries with IDs 1 and 2.
 def beans_search(roastery_ids, farm_ids, vendor_ids):
     cur = conn.cursor()
@@ -39,6 +61,7 @@ def beans_search(roastery_ids, farm_ids, vendor_ids):
     tuple_resultset = cur.fetchall()
     conn.close()
     return tuple_resultset
+
 
 
 

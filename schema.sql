@@ -10,9 +10,13 @@ CREATE TABLE IF NOT EXISTS UserProfile(
 -- many-to-many between user and coffee, therefore rates-relation gets its own table
 CREATE TABLE IF NOT EXISTS Rates(
 	Rating integer CHECK (rating > 0 AND rating < 6), -- 1 to 5 stars
+	Sweetness integer CHECK (rating > 0 AND rating < 6),
+	Body integer CHECK (rating > 0 AND rating < 6),
+	Acidity integer CHECK (rating > 0 AND rating < 6),
+	Bitterness integer CHECK (rating > 0 AND rating < 6),
     FlavourProfile varchar(100),
+	DateOfRating date,
 	UserID integer REFERENCES UserProfile
-
 );
 
 -- one-to-many relationship between farm and coffee
