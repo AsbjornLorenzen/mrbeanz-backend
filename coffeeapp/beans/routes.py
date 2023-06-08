@@ -13,8 +13,8 @@ def hello_world():
 # response: json object containing info about beans with coffeeid
 def getbeanz(beanid):
     thesebeans = get_coffee_with_ratingsC(beanid)
-    json_beans = json.dumps(thesebeans, default=str)
-    return json_beans
+    response = make_response(jsonify(thesebeans),200)
+    return response
 
 @bp.route('/rate', methods=['POST'])
 # request:  contains userid:int, coffeeid:int, rating:int, flavorprofile:string, sweetness:int, body:int, acidity:int, bitterness:int, date:string
@@ -60,5 +60,18 @@ def ratebeanz():
     print(data)
 
     response = make_response()
+    response.headers['Content-Type'] = 'application/json'
+    return response
+
+@bp.route('/querybeanz',methods=['POST'])
+def querybeanz():
+    data = json.loads(request.data)
+    print(data)
+    roastery = data['roasteries']
+    farm = data['farms']
+    vendor = data['vendors']
+    beans = beans_filter(roastery,farm,vendor)
+    print(beans)
+    response = make_response(jsonify(beans),200)
     response.headers['Content-Type'] = 'application/json'
     return response
