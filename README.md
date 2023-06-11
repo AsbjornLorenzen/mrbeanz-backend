@@ -1,3 +1,13 @@
+# usage
+
+## Database init
+1. set the database in __init__.py file.
+2. run initial_inserts.sql in your database.
+
+## Running the backend
+Remember to run the frontend simultaneously
+$ python3 run.py
+
 # Dependencies
 
 ## Conda

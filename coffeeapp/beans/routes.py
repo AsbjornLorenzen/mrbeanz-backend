@@ -67,10 +67,14 @@ def ratebeanz():
 def querybeanz():
     data = json.loads(request.data)
     print(data)
+
     roastery = data['roasteries']
     farm = data['farms']
     vendor = data['vendors']
+
+    print("\n HELLO WORLD! \n")
     beans = beans_filter(roastery,farm,vendor)
+
     print(beans)
     response = make_response(jsonify(beans),200)
     response.headers['Content-Type'] = 'application/json'
