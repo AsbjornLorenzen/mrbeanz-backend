@@ -72,7 +72,6 @@ def querybeanz():
     farm = data['farms']
     vendor = data['vendors']
 
-    print("\n HELLO WORLD! \n")
     beans = beans_filter(roastery,farm,vendor)
 
     print(beans)
